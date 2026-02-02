@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For You ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
+    transition: background 1.2s ease;
+}
+
+/* Common */
+.stage {
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.stage.active {
+    display: flex;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    padding: 40px;
+}
+
+.photo {
+    width: 230px;
+    border-radius: 22px;
+    opacity: 0;
+    animation: slideIn 1.2s forwards;
+}
+
+@keyframes slideIn {
+    from { transform: translateX(-120px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+.text {
+    max-width: 430px;
+    font-size: 22px;
+    line-height: 1.5;
+}
+
+/* Buttons */
+.btn {
+    margin-top: 30px;
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 30px;
+    background: #ff4d6d;
+    color: white;
+    cursor: pointer;
+    font-size: 17px;
+}
+
+/* Stage 1 */
+#stage1 {
+    background: pink;
+}
+
+.open-box {
+    background: white;
+    padding: 30px 60px;
+    border-radius: 25px;
+    font-size: 26px;
+    cursor: pointer;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.06); }
+    100% { transform: scale(1); }
+}
+
+/* Hearts background */
+.hearts::before {
+    content: "❤ ❤ ❤ ❤ ❤";
+    position: absolute;
+    font-size: 42px;
+    opacity: 0.12;
+    animation: float 10s linear infinite;
+}
+
+@keyframes float {
+    from { transform: translateY(100vh); }
+    to { transform: translateY(-120vh); }
+}
+
+/* Final celebration */
+.pop {
+    position: absolute;
+    top: 15%;
+    font-size: 34px;
+    animation: pop 1s ease-out forwards;
+}
+
+@keyframes pop {
+    from { transform: scale(0); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- STAGE 1 -->
+<div class="stage active" id="stage1">
+    <div class="open-box" onclick="goStage(2)">
+        🎁 Open
+    </div>
+</div>
+
+<!-- STAGE 2 -->
+<div class="stage hearts" id="stage2">
+    <div class="container">
+        <img src="photo1.jpg" class="photo">
+        <div class="text">
+            <p>
+                <strong>Hey you 😊</strong><br><br>
+                Today isn’t just any day…<br>
+                It’s the day the world got a little more beautiful ✨
+            </p>
+            <div class="btn" onclick="goStage(3)">
+                Tap if you’re smiling 😄
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- STAGE 3 -->
+<div class="stage hearts" id="stage3">
+    <div class="container">
+        <img src="photo2.jpg" class="photo">
+        <div class="text">
+            <p>
+                You don’t just make days better,<br>
+                you make people better — especially me 💫<br><br>
+                Your smile, your kindness,<br>
+                your way of being you…<br>
+                it all matters more than you know 🥹
+            </p>
+            <div class="btn" onclick="goStage(4)">
+                One last thing… 👀❤️
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- STAGE 4 -->
+<div class="stage" id="stage4">
+    <div class="pop">🎉🎂🎈</div>
+    <div class="container">
+        <img src="photo3.jpg" class="photo">
+        <div class="text">
+            <p>
+                <strong>Happy Birthday ❤️</strong><br><br>
+                May this year give you<br>
+                endless smiles, big dreams,<br>
+                and everything your heart wishes for ✨<br><br>
+                I’m really lucky to have you 💞
+            </p>
+        </div>
+    </div>
+</div>
+
+<script>
+function goStage(n) {
+    document.querySelectorAll('.stage').forEach(s => s.classList.remove('active'));
+    document.getElementById('stage' + n).classList.add('active');
+
+    if (n === 2) document.body.style.background = "#ffd6e0";
+    if (n === 3) document.body.style.background = "#ff9aa2";
+    if (n === 4) document.body.style.background = "#ffffff";
+}
+</script>
+
+</body>
+</html>
